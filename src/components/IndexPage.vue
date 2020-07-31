@@ -84,7 +84,9 @@ export default {
   },
 
   mounted() {
-    /** Check time every 60 seconds */
+    this.checkTime();
+
+    /** Schedule time check every 60 seconds */
     this.interval = setInterval(this.checkTime, 60 * 1000);
   },
 
