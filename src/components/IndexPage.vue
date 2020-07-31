@@ -18,7 +18,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="hour in groupedByHour" :key="hour[0]" class="c-hour">
+      <tr
+        v-for="hour in groupedByHour"
+        :key="hour[0]"
+        class="c-hour"
+        :class="{ 'c-hour--current': hour[0] === currentHour }"
+      >
         <td>{{ Hour[hour[0]] }}</td>
         <td v-for="(rule, index) in hour[1]" :key="index">
           <span v-if="rule.isAllowed" class="c-hour__action">
@@ -67,6 +72,11 @@ export default {
 
       return Object.entries(groupedObject);
     },
+
+    currentHour() {
+      const now = new Date();
+      return "h" + now.getHours().toString().padStart(2, "0");
+    },
   },
 };
 </script>
@@ -78,11 +88,12 @@ export default {
 }
 
 .c-table th {
-  color: hsl(176, 56%, 55%);
+  color: hsl(188, 56%, 23%);
 }
 
 .c-table td {
-  color: hsl(188, 56%, 23%);
+  color: hsl(176, 56%, 55%);
+  transition: font-weight 300ms, color 300ms, background-color 300ms;
 }
 
 .c-table th,
@@ -93,7 +104,7 @@ export default {
   text-align: left;
 }
 
-.c-table tr:nth-child(odd) td {
+.c-table tr:not(.c-hour--current):nth-child(odd) td {
   background-color: hsl(188, 56%, 99%);
 }
 
@@ -101,5 +112,11 @@ export default {
   text-align: left;
   padding: 0 16px;
   color: hsl(0, 100%, 71%);
+}
+
+.c-hour--current td {
+  font-weight: bold;
+  color: hsl(188, 56%, 23%);
+  background-color: hsl(50, 100%, 71%);
 }
 </style>
