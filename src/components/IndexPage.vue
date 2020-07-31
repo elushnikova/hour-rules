@@ -78,6 +78,14 @@ export default {
   width: 100%;
 }
 
+.c-table th {
+  color: hsl(176, 56%, 55%);
+}
+
+.c-table td {
+  color: hsl(188, 56%, 23%);
+}
+
 .c-table th,
 .c-table td {
   box-sizing: border-box;
@@ -86,17 +94,13 @@ export default {
   text-align: left;
 }
 
-.c-table th,
-.c-table tr:not(:last-child) td {
-  border-bottom: 1px solid lightgrey;
+.c-table tr:nth-child(odd) td {
+  background-color: hsl(188, 56%, 99%);
 }
 
 .c-table__caption {
   text-align: left;
   padding: 0 16px;
-}
-
-.c-hour__action {
-  color: lightseagreen;
+  color: hsl(0, 100%, 71%);
 }
 </style>
