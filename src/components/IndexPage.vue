@@ -48,6 +48,8 @@ export default {
       rules,
       actions,
       Hour,
+      interval: undefined,
+      currentHour: undefined,
     };
   },
 
@@ -72,11 +74,22 @@ export default {
 
       return Object.entries(groupedObject);
     },
+  },
 
-    currentHour() {
-      const now = new Date();
-      return "h" + now.getHours().toString().padStart(2, "0");
+  methods: {
+    checkTime() {
+      this.currentHour =
+        "h" + new Date().getHours().toString().padStart(2, "0");
     },
+  },
+
+  mounted() {
+    /** Check time every 60 seconds */
+    this.interval = setInterval(this.checkTime, 60 * 1000);
+  },
+
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
 };
 </script>
