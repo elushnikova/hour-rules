@@ -58,7 +58,6 @@ export default {
       });
     },
 
-    /** @todo Remove duplicate `hour` nested deep in objects */
     groupedByHour() {
       const groupedObject = this.sortedRules.reduce((acc, rule) => {
         acc[rule.hour] = acc[rule.hour] || [];
