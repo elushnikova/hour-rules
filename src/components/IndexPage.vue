@@ -90,13 +90,16 @@ export default {
       this.currentHour =
         "h" + new Date().getHours().toString().padStart(2, "0");
     },
+
+    scheduleTimeCheck() {
+      /** Every 60 seconds */
+      this.interval = setInterval(this.checkTime, 60 * 1000);
+    },
   },
 
   mounted() {
     this.checkTime();
-
-    /** Schedule time check every 60 seconds */
-    this.interval = setInterval(this.checkTime, 60 * 1000);
+    this.scheduleTimeCheck();
   },
 
   beforeDestroy() {
