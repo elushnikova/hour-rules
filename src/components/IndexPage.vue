@@ -97,8 +97,17 @@ export default {
     },
 
     scrollToCurrent() {
-      const currentEl = document.getElementsByClassName("c-hour--current")[0];
-      currentEl.scrollIntoView();
+      /** 100px fixed caption, 20px extra */
+      const captionOffset = 120;
+      const element = document.getElementsByClassName("c-hour--current")[0];
+      const elClientY = element.getBoundingClientRect().top;
+      const elPageY = elClientY + window.pageYOffset;
+
+      window.scrollTo({
+        top: elPageY - captionOffset,
+        left: 0,
+        behavior: "smooth",
+      });
     },
   },
 
