@@ -122,6 +122,10 @@ export default {
     document.addEventListener("DOMContentLoaded", this.scrollToCurrent);
   },
 
+  updated() {
+    this.scrollToCurrent();
+  },
+
   beforeDestroy() {
     clearInterval(this.interval);
   },
