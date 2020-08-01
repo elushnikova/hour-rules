@@ -32,6 +32,7 @@
         :key="hour[0]"
         class="c-hour"
         :class="{ 'c-hour--current': isCurrent(hour[0]) }"
+        :ref="isCurrent(hour[0]) && 'current'"
       >
         <td>{{ Hour[hour[0]] }}</td>
         <td v-for="(rule, index) in hour[1]" :key="index">
@@ -99,7 +100,7 @@ export default {
     scrollToCurrent() {
       /** 100px fixed caption, 20px extra */
       const captionOffset = 120;
-      const element = document.getElementsByClassName("c-hour--current")[0];
+      const element = this.$refs["current"][0];
       const elClientY = element.getBoundingClientRect().top;
       const elPageY = elClientY + window.pageYOffset;
 
