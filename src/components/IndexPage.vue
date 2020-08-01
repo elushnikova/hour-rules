@@ -118,6 +118,7 @@ export default {
 .c-table {
   border-collapse: collapse;
   width: 100%;
+  margin-top: 120px; /* fixed caption height of 100px + extra */
 }
 
 .c-table th {
@@ -142,6 +143,12 @@ export default {
 }
 
 .c-table__caption {
+  position: fixed;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  background-color: white;
+  border-bottom: 4px dotted hsl(0, 100%, 71%);
   text-align: left;
   padding: 0 16px;
   color: hsl(0, 100%, 71%);
