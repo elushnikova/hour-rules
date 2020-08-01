@@ -95,11 +95,17 @@ export default {
       /** Every 60 seconds */
       this.interval = setInterval(this.checkTime, 60 * 1000);
     },
+
+    scrollToCurrent() {
+      const currentEl = document.getElementsByClassName("c-hour--current")[0];
+      currentEl.scrollIntoView();
+    },
   },
 
   mounted() {
     this.checkTime();
     this.scheduleTimeCheck();
+    document.addEventListener("DOMContentLoaded", this.scrollToCurrent);
   },
 
   beforeDestroy() {
