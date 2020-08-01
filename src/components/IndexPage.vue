@@ -31,7 +31,7 @@
         v-for="hour in groupedByHour"
         :key="hour[0]"
         class="c-hour"
-        :class="{ 'c-hour--current': hour[0] === currentHour }"
+        :class="{ 'c-hour--current': isCurrent(hour[0]) }"
       >
         <td>{{ Hour[hour[0]] }}</td>
         <td v-for="(rule, index) in hour[1]" :key="index">
@@ -108,6 +108,10 @@ export default {
         left: 0,
         behavior: "smooth",
       });
+    },
+
+    isCurrent(hour) {
+      return hour === this.currentHour;
     },
   },
 
