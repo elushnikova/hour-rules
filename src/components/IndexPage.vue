@@ -1,8 +1,17 @@
 <template>
   <table v-if="actions.length && groupedByHour.length" class="c-table">
     <caption class="c-table__caption">
-      <h1>
-        What you can do this hour
+      <h1 class="c-title">
+        <img
+          src="../assets/images/hourglass.svg"
+          alt="Hour rules logo"
+          width="60"
+          height="60"
+          class="c-title__image"
+        />
+        <span class="c-title__text">
+          What you can do this hour
+        </span>
       </h1>
     </caption>
     <thead>
@@ -133,5 +142,14 @@ export default {
   font-weight: bold;
   color: hsl(188, 56%, 23%);
   background-color: hsl(50, 100%, 71%);
+}
+
+.c-title {
+  display: flex;
+  align-items: center;
+}
+
+.c-title__image + .c-title__text {
+  margin-left: 8px;
 }
 </style>
